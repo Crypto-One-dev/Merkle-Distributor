@@ -34,6 +34,7 @@ contract MerkleDistributor3 is ReentrancyGuard {
 
     function submitClaim(address account, bytes32[] calldata merkleProof)
         external
+        nonReentrant
     {
         Claim storage sClaim = claims[account];
         require(sClaim.submitTime == 0, "Already submitted.");
@@ -64,7 +65,7 @@ contract MerkleDistributor3 is ReentrancyGuard {
         );
     }
 
-    function dispute(address account) external {
+    function dispute(address account) external nonReentrant {
         Claim storage dClaim = claims[account];
         require(dClaim.submitTime != 0, "Not submitted yet.");
         require(!dClaim.isClaimed, "Already claimed.");
