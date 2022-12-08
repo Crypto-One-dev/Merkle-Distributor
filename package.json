@@ -1,0 +1,38 @@
+{
+  "name": "merkle_distributor",
+  "version": "1.0.0",
+  "description": "Composable Finance Test Merkle Distributor",
+  "main": "index.js",
+  "scripts": {
+    "generate": "npx ts-node ./scripts/generate_test_data.ts",
+    "clean": "npx hardhat clean",
+    "compile": "npx hardhat compile",
+    "test": "hardhat test"
+  },
+  "author": "William Liu",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.11.11",
+    "chai": "^4.3.7",
+    "hardhat": "^2.12.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.7",
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/test-helpers": "^0.5.16",
+    "@typechain/hardhat": "^6.1.4",
+    "crypto": "^1.0.1",
+    "csv-parser": "^3.0.0",
+    "ethers": "^5.7.2",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.3.9",
+    "typechain": "^8.1.1",
+    "web3": "^1.8.1"
+  }
+}
