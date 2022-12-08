@@ -58,4 +58,5 @@ Test smart contract
     - Ensure that the dispute function cannot be front-run
         I am not sure for the front-run in dispute function.
         At first, I thought it is front running but it's not useful for airdrop.
+        Attackers don't need to do frontrunning for dispute function.
         So I made the dispute function can be called after user submit the claim.
