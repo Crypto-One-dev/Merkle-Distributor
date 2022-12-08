@@ -4,8 +4,9 @@ pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {MerkleProof} from "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MerkleDistributor3 {
+contract MerkleDistributor3 is ReentrancyGuard {
     bytes32 public immutable merkleRoot;
     address public immutable airdropToken;
     uint256 public immutable airdropAmount;
@@ -47,7 +48,7 @@ contract MerkleDistributor3 {
         sClaim.submitTime = block.timestamp;
     }
 
-    function executeClaim(address account) external {
+    function executeClaim(address account) external nonReentrant {
         Claim storage eClaim = claims[account];
         require(eClaim.submitTime != 0, "Not submitted yet.");
         require(

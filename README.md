@@ -34,6 +34,8 @@ Test smart contract
     Claim function has airdrop token address and this can make some problems.
     1. Attacker can claim other tokens instead of airdrop token.
     2. Attacker can use fake token address to prevent users' claim.
+    3. Claim function has external call so for secure purpose we need to use Checks-Effects-Interactions pattern. Also I
+       used ReentrancyGuard.sol to use nonReentrant modifier.
 
 ## 2. Merkle Distributor version 2
 

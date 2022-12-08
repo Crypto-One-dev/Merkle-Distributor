@@ -4,8 +4,9 @@ pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {MerkleProof} from "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MerkleDistributor2 {
+contract MerkleDistributor2 is ReentrancyGuard {
     bytes32 public immutable merkleRoot;
     address public immutable airdropToken;
     uint256 public immutable airdropAmount;
@@ -22,7 +23,10 @@ contract MerkleDistributor2 {
         airdropAmount = _airdropAmount;
     }
 
-    function claim(address account, bytes32[] calldata merkleProof) external {
+    function claim(address account, bytes32[] calldata merkleProof)
+        external
+        nonReentrant
+    {
         require(!isClaimed[account], "Already claimed.");
 
         bytes32 node = keccak256(abi.encodePacked(account));
