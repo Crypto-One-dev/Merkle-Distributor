@@ -1,12 +1,18 @@
 # Merkle Distributor Test
 
-## 1. Prepare test data
+Install packages
+
+    npm install
+
+Test smart contract
+
+    npm run test
+
+## Prepare test data
 
     Create 100 random test accounts:
 
-    ```shell
     npm run generate
-    ```
 
     This command will create a "test_data.csv" file which include address and amount.
     I made random amount because maybe airdrop amount is not fixed and have tiers in airdrop.
@@ -16,7 +22,7 @@
     get_merkleTree() function in util will provide merkleTree and accountList( 100 in test).
     MerkleTree is providing merkleRoot, merkleProof, etc...
 
-## 2. Merkle Distributor version 1
+## 1. Merkle Distributor version 1
 
     MerkleDistributor1.sol is Merkle-distributor contract.
     There is a claim function which includes 2 addresses and calldata.
@@ -29,14 +35,14 @@
     1. Attacker can claim other tokens instead of airdrop token.
     2. Attacker can use fake token address to prevent users' claim.
 
-## 3. Merkle Distributor version 2
+## 2. Merkle Distributor version 2
 
     In MerleDistributor2.sol I fixed version 1's vulnerabilities.
 
     By removing token address in claim function, I prevented the vulnerabilities.
     Instead, I added airdrop token in constructor.
 
-## 4. Merkle Distributor version 3
+## 3. Merkle Distributor version 3
 
     In MerleDistributor3.sol I added additional functionalities.
 
